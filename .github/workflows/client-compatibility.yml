@@ -1,4 +1,3 @@
-
 name: Tests against Java Driver Verions
 
 on:
@@ -9,18 +8,13 @@ on:
 
 jobs:
   install:
-    if: github.actor == "SiyaoIsHiding"
+    if: github.actor == 'SiyaoIsHiding' || github.event_name != 'pull_request_target'
     runs-on: ubuntu-latest
     strategy:
       matrix:
         driver_version: [ 4.10.0, 4.11.0, 4.11.1, 4.11.2, 4.11.3, 4.12.0, 4.12.1, 4.13.0, 4.14.0, 4.15.0, 4.16.0, 4.17.0 ]
         
     steps:
-    - name: Show GitHub context   
-      env: 
-        GITHUB_CONTEXT: ${{ toJson(github) }}   
-      run: echo "$GITHUB_CONTEXT"
-      shell: bash
     - name: Checkout
       uses: actions/checkout@v4
       with:
