@@ -16,6 +16,8 @@ To use either of the policies, you need to include both the Java driver and this
         </dependency>
 ```
 
+It is also compatible with older versions of the driver (version 4.10.0 and above), including the ones with `com.datastax.oss` group ID.
+
 You also have to specify the name of the load balancing policy class in your `application.conf` (see [this](https://docs.datastax.com/en/developer/java-driver/4.17/manual/core/load_balancing/index.html#load-balancing)).
 ```conf
 datastax-java-driver.basic.load-balancing-policy {
