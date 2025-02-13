@@ -27,7 +27,7 @@ datastax-java-driver.basic.load-balancing-policy {
 We recommend the `DefaultLoadBalancingPolicy` that comes with the Java Driver for general use. 
 This policy leverages real-time measurements and swiftly responds to changes in node status at short intervals, such as those caused by garbage collection or compaction—common factors that can slow down nodes. 
 
-However, if you anticipate prolonged delays in node responsiveness, such as during network upgrades or heavy data migrations, you might consider opting for the `LatencyAndInflightCountLoadBalancingPolicy` or `LatencySensitiveLoadBalancingPolicy`.
+However, if you anticipate prolonged delays in node responsiveness, such as during network upgrades or heavy data migrations, you might consider opting for the `LatencyAndInflightCountLoadBalancingPolicy`.
 
 `LatencySensitiveLoadBalancingPolicy` behaves the closest to the 3.x java driver's `TokenAwarePolicy(LatencyAwarePolicy(DCAwareRoundRobinPolicy))`. 
 They have an advantage over 4.x `DefaultLoadBalancingPolicy` when nodes are slowed for a long time, because they both depend on historical data. 
@@ -46,4 +46,4 @@ Below is the client-side latency and the throughput of the 3.x driver, `LatencyA
 
 We can see that the client-side latency for both `LatencyAndInflightCountLoadBalancingPolicy` and the 4.x `DefaultLoadBalancingPolicy` almost doesn't change while the 3.x driver's latency raises significantly.
 
-We believe quick changes in node status are more common in production environments and therefore recommend either the 4.x `DefaultLoadBalancingPolicy` or `LatencyAndInflightCountLoadBalancingPolicy` to get busy node avoidance behaviour as described above.  You should consider `LatencySensitiveLoadBalancingPolicy` when you anticipate prolonged delays in node responsiveness.
+We believe quick changes in node status are more common in production environments and therefore recommend either the 4.x `DefaultLoadBalancingPolicy` or `LatencyAndInflightCountLoadBalancingPolicy` to get busy node avoidance behaviour as described above.
